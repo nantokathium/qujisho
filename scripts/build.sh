@@ -6,6 +6,8 @@ TRIM_SRC=./build/qujisho.trim.txt
 RELEASE_GENERAL=${BUILD_DIR}/qujisho-general.txt
 RELEASE_WIN=${BUILD_DIR}/qujisho-windows.txt
 
+mkdir $BUILD_DIR
+
 # コメント行を取り除く。
 cat $SRC | perl -wpe 's/^#.*?$//g' > $TRIM_SRC
 
