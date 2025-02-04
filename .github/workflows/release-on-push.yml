@@ -12,13 +12,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Build
-        run: echo ${{ github.sha }} > Release.txt
-        run: mkdir release
-        run: cp qujisho.txt release/qujisho-general.txt
-        run: iconv -f UTF-8 -t UTF-16LE qujisho.txt > release/qujisho-windows.txt
+        run: bash scripts/build.sh
       - name: Test
-        run: cat release/qujisho-general.txt
-        run: iconv -f UTF-16 -t UTF-8
+        run: bash scripts/test.sh
       - name: Release
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
